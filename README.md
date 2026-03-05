@@ -1,4 +1,10 @@
 # My First SQL Project
+
+Actual ERD below 
+
+<img width="1896" height="1020" alt="MyFirstSQLProjectERD" src="https://github.com/user-attachments/assets/6caa37bc-247e-4e69-b6ad-6b2de569af6a" />
+
+
 Transport Performance & Cost Management System
 Project Description
 
@@ -86,10 +92,6 @@ delivered
 Each status update creates a new row, allowing the system to track the full history of the delivery.
 
 A frontend tablet interface is intended to allow drivers and partners to update these statuses in real time.
-
-
-<img width="1896" height="1020" alt="MyFirstSQLProjectERD" src="https://github.com/user-attachments/assets/3e6aa802-2e62-46f1-9a7a-8e7c688e27a9" />
-
 
 Language
 
