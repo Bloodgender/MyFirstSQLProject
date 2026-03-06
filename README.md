@@ -1,4 +1,10 @@
 # My First SQL Project
+
+Actual ERD below 
+
+<img width="1896" height="1020" alt="MyFirstSQLProjectERD" src="https://github.com/user-attachments/assets/6caa37bc-247e-4e69-b6ad-6b2de569af6a" />
+
+
 Transport Performance & Cost Management System
 Project Description
 
