@@ -225,3 +225,30 @@ VALUES
 ('Elektro Kft.', 'Tatabánya', 'Fő u. 7'),
 ('Épület Kft.', 'Szombathely', 'Petőfi u. 15'),
 ('Lakópark Kft.', 'Békéscsaba', 'Jókai u. 30');
+
+-- VIEW segment
+
+-- Instock quantity 
+
+CREATE VIEW v_instock_quantity AS
+SELECT 
+    merchandise_id, 
+    merchandise_name, 
+    instock 
+FROM shipment;
+
+-- Delivery status overview
+
+CREATE VIEW v_delivery_status_overview AS
+SELECT 
+    d.delivery_id AS delivery_id, 
+    l.worker_id AS worker_id, 
+    d.delivery_actualstatus AS status, 
+    d.actualstatus_time AS status_time
+FROM delivery_status AS d
+LEFT JOIN login AS l 
+    ON d.delivery_id = l.delivery_id;
+
+-- Driver deliveries
+-- Partner deliveries
+-- Delivery timeline
