@@ -250,5 +250,41 @@ LEFT JOIN login AS l
     ON d.delivery_id = l.delivery_id;
 
 -- Driver deliveries
+
+CREATE VIEW driver_deliveries AS
+SELECT
+    d.delivery_id AS delivery_id,
+    d.driver_id AS driver_id,
+    dd.driver_name AS driver_name
+FROM deliveries AS d
+LEFT JOIN drivers AS dd
+    ON d.driver_id = dd.driver_id;
+
 -- Partner deliveries
+
+CREATE VIEW partners_deliveries AS
+SELECT
+    d.delivery_id AS delivery_id,
+    p.partner_id AS partner_id,
+    p.partner_name AS partner_name
+FROM deliveries AS d
+LEFT JOIN partners AS p
+    ON d.partner_id = p.partner_id;
+
 -- Delivery timeline
+-- deliveries table used as bridge between status, drivers and partners
+
+CREATE VIEW delivery_timeline AS
+SELECT
+    ds.delivery_id AS delivery_id,
+    d.driver_name AS driver_name,
+    p.partner_name AS partner_name,
+    ds.actualstatus_time AS actualstatus_time,
+    ds.delivery_actualstatus AS delivery_actualstatus
+FROM delivery_status AS ds
+LEFT JOIN deliveries AS dv
+    ON ds.delivery_id = dv.delivery_id
+LEFT JOIN drivers AS d 
+    ON d.driver_id = dv.driver_id
+LEFT JOIN partners AS p 
+    ON p.partner_id = dv.partner_id;
