@@ -5,7 +5,7 @@
 SELECT merchandise_name, instock
 FROM shipment;
 
--- Deliveries prices
+-- Deliveries revenue
 
 SELECT 
     d.merchandise_id,
@@ -78,12 +78,12 @@ WHERE instock <= 50;
 
 -- Latest deliveries per driver
 
-SELECT driver_id, delivery_id
-FROM deliveries AS ds
-WHERE delivery_time = (
+SELECT d.driver_id, d.delivery_id, d.delivery_time
+FROM deliveries AS d
+WHERE d.delivery_time = (
     SELECT MAX(delivery_time)
     FROM deliveries
-    WHERE delivery_id = ds.delivery_id
+    WHERE driver_id = d.driver_id
 );
 
 -- Partner delivery volume

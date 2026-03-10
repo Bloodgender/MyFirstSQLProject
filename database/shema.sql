@@ -31,7 +31,7 @@ CREATE TABLE drivers (
     entry_date DATE
 );
 
--- Merchandise talbe
+-- Merchandise table
 
 CREATE TABLE shipment ( 
     merchandise_id INT AUTO_INCREMENT PRIMARY KEY, 
@@ -56,7 +56,7 @@ CREATE TABLE partners (
     partner_id INT AUTO_INCREMENT PRIMARY KEY, 
     partner_name VARCHAR(100) NOT NULL, 
     location_city VARCHAR(50) NOT NULL, 
-    location_adress VARCHAR(50) NOT NULL
+    location_address VARCHAR(50) NOT NULL
 );
 
 -- Deliveries table for dayli activities
@@ -109,11 +109,9 @@ CREATE TRIGGER decrease_stock
 AFTER INSERT ON deliveries
 FOR EACH ROW
 BEGIN
-    IF NEW.quantity < shipment.instock THEN
-        UPDATE shipment 
-        SET instock = instock - NEW.quantity 
-        WHERE merchandise_id = NEW.merchandise_id;
-    END IF;
+    UPDATE shipment
+    SET instock = instock - NEW.quantity
+    WHERE merchandise_id = NEW.merchandise_id;
 END$$
 
 DELIMITER ;
